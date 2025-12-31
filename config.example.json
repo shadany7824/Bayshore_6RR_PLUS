@@ -1,7 +1,7 @@
 {
-    "placeId": "JPN01234",
-    "shopName": "Bayshore 6RR",
-    "shopNickname": "BLQ 6RR",
+    "placeId": "MYS01234",
+    "shopName": "BLQ 6RR+",
+    "shopNickname": "BLQ 6RR+",
     "regionId": "1",
     "country": "MYS",
     "regionName": "MYS01234",
@@ -34,7 +34,7 @@
         "giveMeterReward": 0,
        	"newCardsBanned": 0
     },
-     "notices": ["Welcome to BLQ 6RR+", "Message 2", "Message 3"], 
+     "notices": ["Welcome to BLQ 6RR+", "Discord: https://discord.gg/g8Rr7qpmK6", "In development."], 
      "screenshot": 0,
      "revisionCheck": 0
 }
