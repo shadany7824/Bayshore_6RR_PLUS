@@ -1,5 +1,5 @@
 # Bayshore_6RR+ (Neo Alpha Built)
-# Discord: https://discord.gg/g8Rr7qpmK6
+### Discord: https://discord.gg/g8Rr7qpmK6 ###
 A server implementation for Wangan Midnight Maximum Tune 6RR+, based on Bayshore, written in TypeScript language. 
 
 Modified and edited by shadany7824. Forked from Pixel. ~ Inphy for W6W10JPN05 support.
