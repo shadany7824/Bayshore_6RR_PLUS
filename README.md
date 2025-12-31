@@ -1,7 +1,8 @@
-# Bayshore_6RR (Neo Alpha Built)
-A server implementation for Wangan Midnight Maximum Tune 6RR, based on Bayshore, written in TypeScript language. 
+# Bayshore_6RR+ (Neo Alpha Built)
+# Discord: https://discord.gg/g8Rr7qpmK6
+A server implementation for Wangan Midnight Maximum Tune 6RR+, based on Bayshore, written in TypeScript language. 
 
-Modified and edited by Pixel ~ Inphy for W6W10JPN05 support.
+Modified and edited by shadany7824. Forked from Pixel. ~ Inphy for W6W10JPN05 support.
 
 
 ### THIS PROJECT IS CURRENTLY FOR PRIVATE USE. THIS IS NOT FOR COMMERCIAL USAGE. RISK ON YOUR OWN FROM ANY FURTHER LEGAL CONSULT / CEASE & DESIST FROM OFFICIAL GAME DISTRUBUTOR WHEN HOSTING. DO NOT MESSAGE ME OR ANYONE HERE FOR SUPPORT ###
@@ -25,8 +26,8 @@ This repo is based on the original repo (https://github.com/ProjectAsakura/Baysh
 
 
 ## What are things that is currently working
- - Same like 6 and 6R
- - Transfer from 6R
+ - Same like 6,6R and 6RR
+ - Transfer from 6RR
  - VSORG [Expedition] + Ghost Wanted 
  - Ghost Trophies Saving
  - Bingo Mode (Not fully implemented)
