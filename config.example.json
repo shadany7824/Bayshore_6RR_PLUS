@@ -1,14 +1,14 @@
 {
     "placeId": "JPN01234",
     "shopName": "Bayshore 6RR",
-    "shopNickname": "Bayshore 6RR",
+    "shopNickname": "BLQ 6RR",
     "regionId": "1",
-    "country": "JPN",
-    "regionName": "JPN01234",
+    "country": "MYS",
+    "regionName": "MYS01234",
     "serverIp": "127.0.0.1",
     "website": "0"
     "gameOptions": {
-        "grantFullTuneTicketToNewUsers": 5,
+        "grantFullTuneTicketToNewUsers": 6,
         "giftCarsTicketToNewUsers": 0,
         "grantMeterToNewcar": 42,
         "grantNameplateToNewcar": 247,
@@ -34,7 +34,7 @@
         "giveMeterReward": 0,
        	"newCardsBanned": 0
     },
-     "notices": ["Input your banner message here", "Message 2", "Message 3"], 
+     "notices": ["Welcome to BLQ 6RR+", "Message 2", "Message 3"], 
      "screenshot": 0,
      "revisionCheck": 0
 }
