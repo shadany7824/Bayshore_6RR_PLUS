@@ -1,10 +1,10 @@
 {
-  "name": "bayshore_6rr_neo_alpha",
+  "name": "bayshore_6rr+_neo_alpha",
   "version": "1.2.1",
-  "description": "Wangan Midnight Maximum Tune 6RR server implementation. Written in Typescript. Edited by Pixel Cheeze",
+  "description": "Wangan Midnight Maximum Tune 6RR+ server implementation. Written in Typescript. Edited by Pixel Cheeze",
   "main": "dist/index.js",
-  "repository": "https://github.com/valkyrieasyraf/Bayshore_6RR",
-  "author": "valkyrieasyraf",
+  "repository": "https://github.com/shadany7824/Bayshore_6RR_PLUS/",
+  "author": "shadany7824",
   "license": "GNU Affero General Public License v3.0",
   "private": false,
   "scripts": {
