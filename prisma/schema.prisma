@@ -1,4 +1,3 @@
-// Bayshore 6RR Plus Schema - Compatible with PostgreSQL 18
 generator client {
     provider = "prisma-client-js"
 }
@@ -88,8 +87,11 @@ model Car {
     customFrame         Int     @default(0)
     acquiredBingoNumbers Int[]
     
-    // FIX: Missing column for WMMT6 server data
     rgRegions           Int[]   @default([])
+
+    // FIXED: Added back-reference to Shop
+    Shop                Shop?   @relation(fields: [shopId], references: [dbId])
+    shopId              Int?
 
     GhostExpedition GhostExpedition[]
     GhostExpeditionWantedCar GhostExpeditionWantedCar[]
@@ -97,6 +99,7 @@ model Car {
 
 model Shop {
     dbId     Int    @id @default(autoincrement())
+    // FIXED: Relation correctly established here
     car      Car[]
     placeId  String
     regionId Int
