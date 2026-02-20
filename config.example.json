@@ -6,7 +6,7 @@
     "country": "MYS",
     "regionName": "MYS01234",
     "serverIp": "127.0.0.1",
-    "website": "0"
+    "website": "0",
     "gameOptions": {
         "grantFullTuneTicketToNewUsers": 6,
         "giftCarsTicketToNewUsers": 0,
