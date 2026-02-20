@@ -1,7 +1,7 @@
 import { Application } from "express";
 import { Config } from "../config";
 import { Module } from "module";
-import { Prisma } from "../prisma";
+import { Prisma } from "../index";
 import { User } from "@prisma/client";
 import Long from "long";
 
