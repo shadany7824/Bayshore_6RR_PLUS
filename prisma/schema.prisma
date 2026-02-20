@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
     provider = "prisma-client-js"
 }
@@ -22,7 +19,7 @@ model User {
     bookmarks          Int[]
     ScratchSheet       ScratchSheet[]
     currentSheet       Int            @default(1)
-    lastScratched      Int            @default(0) // Timestamp
+    lastScratched      Int            @default(0)
     receivedNumOfItems Int            @default(1)
 }
 
@@ -30,7 +27,7 @@ model ScratchSheet {
     id      Int             @id @default(autoincrement())
     User    User            @relation(fields: [userId], references: [id])
     userId  Int
-    sheetNo Int // Player's sheet number (i.e. first sheet)
+    sheetNo Int 
     squares ScratchSquare[]
 }
 
@@ -54,10 +51,8 @@ model UserItem {
 }
 
 model Car {
-    user   User @relation(fields: [userId], references: [id])
-    userId Int
-
-    // This is the Car object itself
+    user                User @relation(fields: [userId], references: [id])
+    userId              Int
     carId               Int     @id @default(autoincrement())
     name                String
     manufacturer        Int
@@ -91,10 +86,9 @@ model Car {
     country             String  @default("JPN")
     customFrame         Int     @default(0)
 
-    // Bingo
-    acquiredBingoNumbers Int[] @default([0])
+    // FIXED: Only one definition of acquiredBingoNumbers
+    acquiredBingoNumbers Int[]   @default([])
 
-    // This is more data about the car
     tuningPoints      Int         @default(0)
     odometer          Int         @default(0)
     playCount         Int         @default(0)
@@ -102,7 +96,6 @@ model Car {
     carSettingsDbId   Int         @unique
     settings          CarSettings @relation(fields: [carSettingsDbId], references: [dbId])
 
-    // VS
     auraMotif          Int @default(0)
     vsPlayCount        Int @default(0)
     vsBurstCount       Int @default(0)
@@ -115,24 +108,23 @@ model Car {
     vsSingleStarMedals Int @default(0)
     vsPlainMedals      Int @default(0)
 
-    // Ghost
-    ghostLevel         Int     @default(1)
-    rgPlayCount        Int     @default(0)
-    rgWinCount         Int     @default(0)
-    rgTrophy           Int     @default(0)
-    rgScore            Int     @default(0)
-    rgStamp            Int     @default(1)
-    rgAcquireAllCrowns Boolean @default(false)
-    rgRegionMapScore   Int[]
-    stampSheetCount    Int     @default(0)
-    stampSheet         Int[]
-    acquiredBingoNumbers Int []  @default([0])
+    ghostLevel          Int     @default(1)
+    rgPlayCount         Int     @default(0)
+    rgWinCount          Int     @default(0)
+    rgTrophy            Int     @default(0)
+    rgScore             Int     @default(0)
+    rgStamp             Int     @default(1)
+    rgAcquireAllCrowns  Boolean @default(false)
+    
+    // FIXED: Added missing rgRegions and map scores
+    rgRegions           Int[]   @default([])
+    rgRegionMapScore    Int[]   @default([])
+    stampSheetCount     Int     @default(0)
+    stampSheet          Int[]   @default([])
 	
-    // Dress Up
     dressupLevel Int @default(0)
     dressupPoint Int @default(0)
 
-    // Story
     stPlayCount            Int     @default(0)
     stClearBits            Int     @default(0)
     stClearDivCount        Int     @default(0)
@@ -142,14 +134,12 @@ model Car {
     stConsecutiveWinsMax   Int     @default(0)
     stCompleted100Episodes Boolean @default(false)
 
-    // Highway Ghost
-    rgScoreVs_2               Int @default(0)
-    rgHighwayClearCount       Int @default(0)
-    rgHighwayPoint            Int @default(0)
-    rgHighwayStationClearBits Int @default(0)
-    rgHighwayPreviousDice     Int @default(0)
+    rgScoreVs_2                Int @default(0)
+    rgHighwayClearCount        Int @default(0)
+    rgHighwayPoint             Int @default(0)
+    rgHighwayStationClearBits  Int @default(0)
+    rgHighwayPreviousDice      Int @default(0)
 
-    // Last Played
     lastPlayedPlaceId Int?
     lastPlayedPlace   PlaceList? @relation(fields: [lastPlayedPlaceId], references: [id])
 
@@ -178,7 +168,6 @@ model Car {
 model CarGTWing {
     dbId Int  @id @default(autoincrement())
     car  Car?
-
     pillar         Int @default(0)
     pillarMaterial Int @default(0)
     mainWing       Int @default(0)
@@ -199,23 +188,21 @@ model CarItem {
 model CarSettings {
     dbId Int  @id @default(autoincrement())
     car  Car?
-
-    view               Boolean @default(true)
-    transmission       Boolean @default(false)
-    retire             Boolean @default(false)
-    meter              Int     @default(0)
-    navigationMap      Boolean @default(true)
-    volume             Int     @default(2)
-    bgm                Int     @default(0)
-    nameplate          Int     @default(0)
-    nameplateColor     Int     @default(0)
-    terminalBackground Int     @default(0)
+    view                Boolean @default(true)
+    transmission        Boolean @default(false)
+    retire              Boolean @default(false)
+    meter               Int     @default(0)
+    navigationMap       Boolean @default(true)
+    volume              Int     @default(2)
+    bgm                 Int     @default(0)
+    nameplate           Int     @default(0)
+    nameplateColor      Int     @default(0)
+    terminalBackground  Int     @default(0)
 }
 
 model CarState {
     dbId Int  @id @default(autoincrement())
     car  Car?
-
     hasOpponentGhost Boolean @default(false)
     eventJoined      Boolean @default(false)
     transferred      Boolean @default(false)
@@ -249,46 +236,44 @@ model CarCrown {
 
 model TimeAttackRecord {
     dbId Int @id @default(autoincrement())
-
     car   Car @relation(fields: [carId], references: [carId])
     carId Int
-
-    model        Int // Car model, literally just the `model` field from Car
-    time         Int
-    course       Int
-    isMorning    Boolean
-    section1Time Int     @map("section1Time")
-    section2Time Int     @map("section2Time")
-    section3Time Int     @map("section3Time")
-    section4Time Int     @map("section4Time")
-    section5Time Int?    @map("section5Time")
-    section6Time Int?    @map("section6Time")
-    section7Time Int?    @map("section7Time")
-    tunePower    Int     @default(0) // Car Power
-    tuneHandling Int     @default(0) // Car Handling
+    model         Int
+    time          Int
+    course        Int
+    isMorning     Boolean
+    section1Time  Int     @map("section1Time")
+    section2Time  Int     @map("section2Time")
+    section3Time  Int     @map("section3Time")
+    section4Time  Int     @map("section4Time")
+    section5Time  Int?    @map("section5Time")
+    section6Time  Int?    @map("section6Time")
+    section7Time  Int?    @map("section7Time")
+    tunePower     Int     @default(0)
+    tuneHandling  Int     @default(0)
 }
 
 model GhostTrail {
-    dbId              Int     @id @default(autoincrement())
-    car               Car     @relation(fields: [carId], references: [carId])
-    carId             Int
-    area              Int
-    ramp              Int
-    path              Int
-    trail             Bytes
-    time              Int?
-    driveData         Bytes?  @db.ByteA
-    driveDMergeSerial Int?
-    trendBinaryByUser Bytes?  @db.ByteA
-    byUserMergeSerial Int?
-    trendBinaryByArea Bytes?  @db.ByteA
-    byAreaMergeSerial Int?
-    trendBinaryByCar  Bytes?  @db.ByteA
-    byCarMergeSerial  Int?
-    playedAt          Int     @default(0)
-    tunePower         Int     @default(0)
-    tuneHandling      Int     @default(0)
-    crownBattle       Boolean @default(false)
+    dbId               Int     @id @default(autoincrement())
+    car                Car     @relation(fields: [carId], references: [carId])
+    carId              Int
+    area               Int
+    ramp               Int
+    path               Int
+    trail              Bytes
+    time               Int?
+    driveData          Bytes?  @db.ByteA
+    driveDMergeSerial  Int?
+    trendBinaryByUser  Bytes?  @db.ByteA
+    byUserMergeSerial  Int?
+    trendBinaryByArea  Bytes?  @db.ByteA
+    byAreaMergeSerial  Int?
+    trendBinaryByCar   Bytes?  @db.ByteA
+    byCarMergeSerial   Int?
+    playedAt           Int     @default(0)
+    tunePower          Int     @default(0)
+    tuneHandling       Int     @default(0)
+    crownBattle        Boolean @default(false)
 }
 
 model GhostBattleRecord {
@@ -301,7 +286,7 @@ model GhostBattleRecord {
     opponent1Result       Int
     opponent1TunePower    Int
     opponent1TuneHandling Int
-    opponent1BingoNumbers  Int?
+    opponent1BingoNumbers Int?
     opponent2CarId        Int?
     opponent2Result       Int?
     opponent2TunePower    Int?
@@ -329,8 +314,7 @@ model OCMEvent {
     lengthOfInterval        Int
     area                    Int @default(0)
     minigamePatternId       Int @default(0)
-
-    OCMPeriod OCMPeriod[]
+    OCMPeriod               OCMPeriod[]
 }
 
 model OCMPlayRecord {
@@ -408,7 +392,7 @@ model OCMGhostTrail {
     playedAt      Int     @default(0)
     tunePower     Int     @default(0)
     tuneHandling  Int     @default(0)
-    ocmMainDraw   Boolean @default(false)
+    ocmMainDraw    Boolean @default(false)
 }
 
 model OCMPeriod {
@@ -422,17 +406,16 @@ model OCMPeriod {
 }
 
 model GhostRegisteredFromTerminal {
-    dbId          Int  @id @default(autoincrement())
-    car           Car  @relation(fields: [carId], references: [carId])
-    carId         Int
-    competitionId Int?
-    opponentCarId Int
+    dbId            Int  @id @default(autoincrement())
+    car             Car  @relation(fields: [carId], references: [carId])
+    carId           Int
+    competitionId   Int?
+    opponentCarId   Int
 }
 
 model CarChallenger {
-    id            Int @id @default(autoincrement())
-    challengerCar Car @relation(fields: [challengerCarId], references: [carId])
-
+    id              Int @id @default(autoincrement())
+    challengerCar   Car @relation(fields: [challengerCarId], references: [carId])
     carId           Int
     challengerCarId Int
     stamp           Int
@@ -454,7 +437,6 @@ model CarStampTarget {
 model PlaceList {
     id  Int   @id @default(autoincrement())
     car Car[]
-
     placeId  String
     regionId Int
     shopName String
@@ -462,37 +444,37 @@ model PlaceList {
 }
 
 model GhostExpedition {
-    dbId              Int @id @default(autoincrement())
-    car               Car @relation(fields: [carId], references: [carId])
-    carId             Int
-    ghostExpeditionId Int
-    sugorokuPoint     Int @default(0)
-    earnedScore       Int @default(0)
-    score             Int @default(0)
+    dbId               Int @id @default(autoincrement())
+    car                Car @relation(fields: [carId], references: [carId])
+    carId              Int
+    ghostExpeditionId  Int
+    sugorokuPoint      Int @default(0)
+    earnedScore        Int @default(0)
+    score              Int @default(0)
 }
 
 model GhostExpeditionWantedCar {
-    dbId              Int     @id @default(autoincrement())
-    car               Car     @relation(fields: [carId], references: [carId])
-    carId             Int
-    bonus             Int     @default(0)
-    numOfHostages     Int     @default(1)
-    defeatedMeCount   Int     @default(1)
-    hostage           Int?
-    ghostExpeditionId Int     @default(1)
-    area              Int     @default(0)
-    locked            Boolean @default(false)
-    lockTime          Int     @default(0)
-    challengerCarId   Int?
+    dbId               Int     @id @default(autoincrement())
+    car                Car     @relation(fields: [carId], references: [carId])
+    carId              Int
+    bonus              Int     @default(0)
+    numOfHostages      Int     @default(1)
+    defeatedMeCount    Int     @default(1)
+    hostage            Int?
+    ghostExpeditionId  Int     @default(1)
+    area               Int     @default(0)
+    locked             Boolean @default(false)
+    lockTime           Int     @default(0)
+    challengerCarId    Int?
 }
 
 model GhostExpeditionEvent {
-    dbId              Int    @id @default(autoincrement())
-    ghostExpeditionId Int
-    startAt           Int
-    endAt             Int
-    aftereventEndAt   Int
-    opponentCountry   String
+    dbId               Int    @id @default(autoincrement())
+    ghostExpeditionId  Int
+    startAt            Int
+    endAt              Int
+    aftereventEndAt    Int
+    opponentCountry    String
 }
 
 model FileList {
