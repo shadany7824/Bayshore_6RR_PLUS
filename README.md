@@ -2,7 +2,7 @@
 ### Discord: https://discord.gg/g8Rr7qpmK6 ###
 A server implementation for Wangan Midnight Maximum Tune 6RR+, based on Bayshore, written in TypeScript language. 
 
-Modified and edited by shadany7824. Forked from Pixel. ~ Inphy for W6W10JPN05 support.
+Modified and edited by shadany7824. Forked from Pixel. ~ Inphy for W6P10JPN00 support.
 
 
 ### THIS PROJECT IS CURRENTLY FOR PRIVATE USE. THIS IS NOT FOR COMMERCIAL USAGE. RISK ON YOUR OWN FROM ANY FURTHER LEGAL CONSULT / CEASE & DESIST FROM OFFICIAL GAME DISTRUBUTOR WHEN HOSTING. DO NOT MESSAGE ME OR ANYONE HERE FOR SUPPORT ###
@@ -28,7 +28,7 @@ This repo is based on the original repo (https://github.com/ProjectAsakura/Baysh
 ## What are things that is currently working
  - Same like 6,6R and 6RR
  - Transfer from 6RR
- - VSORG [Expedition] + Ghost Wanted 
+ - VSORG [Expedition] + Ghost Wanted (wait, did 6RR+ have VSORG?) 
  - Ghost Trophies Saving
  - Bingo Mode (Not fully implemented)
  - Online Championship Match (OCM)
